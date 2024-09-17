@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            bankloan
+        </title>
+        <script>
+        function calculateemi(){
+            var loanamount=document.getElementById("loan-amount").value;
+            var interestrate=document.getElementById("intrest-rate").value;
+            var loantenure=document.getElementById("loan-tenure").value;
+            var monthlyinterestrate=interestrate/(12*100);
+            var numberofpayments=loantenure*12;
+            var emi=(loanamount*monthlyinterestrate*Math.pow (1+monthlyinterestrate,numberofpayments))/(Math.pow(1+monthlyinterestrate,numberofpayments)-1);
+            var  emiText="Var montly EMI in RS."+emi.toFixed(2);
+            document.getElementById("emi-result").innerHTML=emiText
+            
+        }
+        </script>
+        <style>
+            #button{
+                background-color:limegreen;
+            }
+            body{
+                display:flex;
+                justify-content: center;
+            }
+            input[type='number']{
+                width:100%;
+            }
+        </style>
+
+    </head>
+    <body>
+        <form>
+            <h1>
+             <a href='home.html'> SBI LOAN CALCULATOR</a>
+            </h1>
+            <label for="loan-amount">Loan amount</label>
+            <input type="number" id="loan-amount" name="loan-amount" placeholder="Enetr loan amount">
+            <br><br>
+            <label for="intrest-rate">
+                intrest-rate
+            </label>
+            <input type="number" id="intrest-rate" name="intrest-rate" placeholder="Enetrintrest rate m%">
+            <br><br>
+            <label for="loan-tenure">Loan Tenure</label>
+            <input type="number" id="loan-tenure" name="loan-tenure" placeholder="Enter loan tenure"><br><br>
+            <input type="button" id="button" value="calculateemi" onClick="calculateemi()"><br>
+            <br>
+            
+            <p id="emi-result"></p>
+        </form>
+    </body>
+</html>
